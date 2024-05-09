@@ -17,3 +17,10 @@ In the src folder, create the following 3 folders:
 The App.js file is the start. So in that div, I need to add the <Navbar /> element I created
 (called "mounting" when putting it in App.js)
 
+### Add fonts
+1. Find a font on Google fonts
+2. Select Get Code (embeded)
+3. Copy the code to embed in <head> element
+4. Go to public folder > index.html file
+5. Add the links under the last meta tag and save
+6. Go to index.css file (in src folder) and add the font in the body css element using the font-family attribute
