@@ -15,3 +15,5 @@ In the src folder, create the following 3 folders:
 - Context (used for context APIs)
 
 The App.js file is the start. So in that div, I need to add the <Navbar /> element I created
+(called "mounting" when putting it in App.js)
+
