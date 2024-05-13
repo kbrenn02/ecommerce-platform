@@ -23,13 +23,16 @@ export const ShopCategory = (props) => {
             </div>
             <div className="shopcategory-products">
                 {all_product.map((item, index) => {
-                    if (props.cateory === item.category) {
+                    if (props.category === item.category) {
                         return <Item key={index} id={item.id} name={item.name} image={item.image} new_price={item.new_price} old_price={item.old_price} />
                     }
                     else {
                         return null;
                     }
                 })}
+            </div>
+            <div className="shopcategory-loadmore">
+                Explore More
             </div>
         </div>
     )
