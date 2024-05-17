@@ -41,6 +41,91 @@ app.post("/upload", upload.single('product'), (req, res)=>{
     })
 })
 
+// Schema for Creating Products (in MongoDB)
+const Product = mongoose.model("Product", {
+    id:{
+        type: Number,
+        require: true,
+    },
+    name:{
+        type: String,
+        require: true,
+    },
+    image:{
+        type: String,
+        require: true,
+    },
+    category:{
+        type: String,
+        require: true,
+    },
+    new_price:{
+        type: Number,
+        require: true,
+    },
+    old_price:{
+        type: Number,
+        require: true,
+    },
+    date:{
+        type: Date,
+        default: Date.now,
+    },
+    available:{
+        type: Boolean,
+        default: true,
+    },
+})
+
+app.post('/addproduct', async (req, res) => {
+    let products = await Product.find({});
+    let id;
+    if(products.length > 0){
+        // this gets the last product added to the array
+        let last_product_array = products.slice(-1);
+        let last_product = last_product_array[0];
+        id = last_product.id + 1;
+    } 
+    else{
+        id = 1;
+    }
+
+    const product = new Product({
+        id: id,
+        name: req.body.name,
+        image: req.body.image,
+        category: req.body.category,
+        new_price: req.body.new_price,
+        old_price: req.body.old_price,
+    });
+    console.log(product);
+    // save product in database.
+    await product.save();
+    console.log("Saved");
+    res.json({
+        success: true,
+        name: req.body.name,
+    })
+})
+
+// Creating API For Deleting Products
+app.post('/removeproduct', async (req, res)=>{
+    await Product.findOneAndDelete({id: req.body.id});
+    console.log("Removed");
+    res.json({
+        success: true,
+        name: req.body.name,
+    });
+})
+
+// Creating API for getting all products
+app.get('/allproducts', async (req, res) => {
+    let products = await Product.find({});
+    console.log("All Products Fetched");
+    res.send(products);
+})
+
+
 // get a message in the terminal to tell you if the app is running successfully on the given port, or if there are errors
 app.listen(port, (error)=> {
     if(!error) {

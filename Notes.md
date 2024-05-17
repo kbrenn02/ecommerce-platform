@@ -88,3 +88,18 @@ To run our backend, run the following terminal command:
 
 ### Thunder Client
 I installed the Thunder Client extension on VSCode to allow me to create new requests to test that the endpoints I made work as expected.
+
+### Backend API Endpoints
+Created endpoints to allow user to add new products, remove products, upload images (for products), and fetch all products.
+We can use these endpoints to create the admin portal.
+
+### Admin Portal
+In the admin folder (cd into the folder), open the terminal and run the following:
+- `npm create vite@latest .`
+- select "y" to install packages
+- framework: "React"
+- variant: "JavaScript"
+- `npm install` to install all dependencies
+
+To run this project:
+- `npm run dev` because we are using vite
