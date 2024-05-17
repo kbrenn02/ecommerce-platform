@@ -31,3 +31,38 @@ You need to set up the routes to the different pages in the App.js page. You do 
 4. Go to public folder > index.html file
 5. Add the links under the last meta tag and save
 6. Go to index.css file (in src folder) and add the font in the body css element using the font-family attribute
+
+### Creating the backend
+We will be using ExpressJS for creating the API and use the JSON web token for the user authentication system. 
+These will be managed in a database. The DB we will use is the MongoDB Atlas Database.
+    - To store images we will use Multer
+1. In the backend folder, we need to install ExpressJS:
+    - `npm init`
+    - package name: (backend) (just press enter)
+    - version: (1.0.0) (just press enter)
+    - description: default (don't type anything, just press enter)
+    - entry point: (index.js) (just press enter)
+    - select enter for the next 5 questions: test command, git repository, keywords, author, license
+    - select enter for "Is this OK? (YES)"
+This creates the package.json file in the backend folder
+
+Then we need to install the express package:
+- `npm install express`
+This adds the node_modules folder in the backend folder
+
+Then install the JSON web token package, the mongoose package, and multer package:
+- `npm install jsonwebtoken`
+- `npm install mongoose`
+- `npm install multer`
+- `npm install cors` (this adds permissions to our app to access the backend)
+
+After installing all of these, we can see the dependencies in the package.json folder. This is pulled from that folder:
+    "dependencies": {
+        "cors": "^2.8.5",
+        "express": "^4.19.2",
+        "jsonwebtoken": "^9.0.2",
+        "mongoose": "^8.4.0",
+        "multer": "^1.4.5-lts.1"
+    }
+
+We also need to create the index.js file in the backend folder. This will be the file that will contain all backend code.
