@@ -103,3 +103,10 @@ In the admin folder (cd into the folder), open the terminal and run the followin
 
 To run this project:
 - `npm run dev` because we are using vite
+
+To clear out the default "Vite + React" images, 
+1. Go to the index.html file in the admin folder and replace "Vite + React" with Admin Panel
+2. Go to src folder and delete all info in App.jsx. Then use rafce shorthand command to create a basic template to fill
+3. Delete App.css file
+4. Delete info in index.css
+5. Go to src > assets folder and delete the .svg file
