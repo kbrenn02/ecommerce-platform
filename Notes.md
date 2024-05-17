@@ -85,3 +85,6 @@ We also need to create the index.js file in the backend folder. This will be the
 To run our backend, run the following terminal command:
 - `node index.js`
 - Once this is running, go to the browser and search "localhost:4000" to see the success message "Express App is Running"
+
+### Thunder Client
+I installed the Thunder Client extension on VSCode to allow me to create new requests to test that the endpoints I made work as expected.
