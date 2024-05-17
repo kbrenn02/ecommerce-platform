@@ -13,9 +13,14 @@ app.use(cors()); // our ReactJS project will connect to express app we made on p
 
 // initialize DB
 // Database connection with MongoDB. Added "e-commerce" at the end
-mongoose.connect("mongodb+srv://kevdev:WhatNowH0H@@cluster0.qfgwvnt.mongodb.net/e-commerce")
+mongoose.connect("mongodb+srv://kevdev:WhatNowH0H@cluster0.qfgwvnt.mongodb.net/ecommerce")
 
 // API endpoint creation
+
+app.get("/", (req, res)=> {
+    res.send("Express App is Running")
+})
+
 app.listen(port, (error)=> {
     if(!error) {
         console.log("Server Running on Port " + port)
