@@ -66,3 +66,19 @@ After installing all of these, we can see the dependencies in the package.json f
     }
 
 We also need to create the index.js file in the backend folder. This will be the file that will contain all backend code.
+
+### Setting up MongoDB
+1. Google MongoDB Atlas
+2. Create an account (I made mine through Google)
+3. Create a project, and create a cluster for the DB. Give the cluster a username and password
+    - User: kevdev
+    - Pass: WhatNowH0H@
+4. To allow anyone to access, add an IP Address of "0.0.0.0"
+    - This allows the server to be accessed from any IP address
+5. After the DB cluster is created in MongoDB Atlas, we need to connect it to our Express server
+    - Select "Connect"
+    - Select "Compass"
+    - Leave default settings ("I don't have MongoDB Compass install" and whatever the default OS is)
+    - Copy the connection string
+    - create a connection in index.js with mongoose.connect("[connection string we copied - need to add password]")
+
