@@ -113,3 +113,8 @@ To clear out the default "Vite + React" images,
 
 Similar to the frontend folder, we create a components folder to hold the different pages for the admin panel.
 Again, similar to frontend, we need to run `npm react-router-dom`
+
+### Functionality / Connections
+The admin panel, backend, and frontend are their own apps, but they need to connect.
+
+When an admin creates a product, it needs to call on the API endpoints in the backend, which then add the product to the frontend.
