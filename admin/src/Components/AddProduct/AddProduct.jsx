@@ -24,7 +24,38 @@ const AddProduct = () => {
     const Add_Product = async () => {
         console.log(productDetails);
         // Link add product to the backend
-        
+        let responseData;
+        let product = productDetails;
+        // create form data
+        let formData = new FormData();
+        formData.append('product',image); // with this, the form data was created
+        // send form data to API. This is all to get the image URL for the image we upload. See below
+        await fetch('http://localhost:4000/upload',{
+            method: 'POST',
+            headers:{
+                Accept:'application/json',
+            },
+            body: formData,
+        }).then((resp) => resp.json()).then((data) => {responseData=data})
+
+        if(responseData.success){
+            // this checks if we get an image url successfully and assigns it to the product that we create
+            // The prouct that we defined above has all product details except the image url
+            product.image = responseData.image_url;
+            console.log(product);
+            // since this is all in the success if statement, if we successfully get an image url, we're also uploading the 
+            // completed product info via the addproduct API defined in the backend
+            await fetch('http://localhost:4000/addproduct',{
+                method: 'POST',
+                headers:{
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(product),
+            }).then((resp)=>resp.json()).then((data)=>{
+                data.success ? alert("Product Added") : alert("Failed")
+            })
+        }
     }
 
     return (
