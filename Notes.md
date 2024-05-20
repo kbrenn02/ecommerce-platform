@@ -110,3 +110,6 @@ To clear out the default "Vite + React" images,
 3. Delete App.css file
 4. Delete info in index.css
 5. Go to src > assets folder and delete the .svg file
+
+Similar to the frontend folder, we create a components folder to hold the different pages for the admin panel.
+Again, similar to frontend, we need to run `npm react-router-dom`
