@@ -118,3 +118,5 @@ Again, similar to frontend, we need to run `npm react-router-dom`
 The admin panel, backend, and frontend are their own apps, but they need to connect.
 
 When an admin creates a product, it needs to call on the API endpoints in the backend, which then add the product to the frontend.
+
+This is done using the fetch call to 'http://localhost:4000' URLs which we set up when creating our CRUD calls in backend.
