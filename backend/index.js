@@ -1,15 +1,18 @@
 const port = 4000;
 // Have to initialize dependencies and modules that we imported
 const express = require("express");
+// using express, we create an app
 const app = express();
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
+// multer is used for image storage
 const multer = require("multer");
 const path = require("path");
+// cors is used for access to react project
 const cors = require("cors");
 
 app.use(express.json()); // whatever request we get through response will be automatically parsed through json
-app.use(cors()); // our ReactJS project will connect to express app we made on port 4000
+app.use(cors()); // our ReactJS project will connect to express app we made on port 4000. Also used to connect front and back end
 
 // initialize DB
 // Database connection with MongoDB. Added "e-commerce" at the end
@@ -77,6 +80,8 @@ const Product = mongoose.model("Product", {
     },
 })
 
+
+// Add Product API
 app.post('/addproduct', async (req, res) => {
     let products = await Product.find({});
     let id;
@@ -209,6 +214,7 @@ app.post('/login', async (req, res) => {
     }
 })
 
+
 // Creating Endpoint for New Collection Data
 app.get('/newcollections', async (req, res) => {
     let products = await Product.find({});
@@ -265,6 +271,16 @@ app.post('/removefromcart', fetchUser, async (req, res) => {
     userData.cartData[req.body.itemId] -= 1;
     await Users.findOneAndUpdate({_id:req.user.id}, {cartData: userData.cartData});
     res.send("Removed")
+})
+
+
+// Creating Endpoint to Get CartData
+app.post('/getcart', fetchUser, async (req, res) => {
+    console.log("GetCart ")
+    // get the user who is logged in
+    let userData = await Users.findOne({_id:req.user.id});
+    // send what is currently in their cart (as saved in the DB)
+    res.json(userData.cartData);
 })
 
 
