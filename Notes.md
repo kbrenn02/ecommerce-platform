@@ -93,6 +93,9 @@ I installed the Thunder Client extension on VSCode to allow me to create new req
 Created endpoints to allow user to add new products, remove products, upload images (for products), and fetch all products.
 We can use these endpoints to create the admin portal.
 
+Every time an update is made to index.js in the backend, then changes won't work until you RERUN the backend
+(control C, then node index.js)
+
 ### Admin Portal
 In the admin folder (cd into the folder), open the terminal and run the following:
 - `npm create vite@latest .`

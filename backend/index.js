@@ -219,6 +219,44 @@ app.get('/newcollections', async (req, res) => {
 })
 
 
+// Creating Endpoint for Popular in Women Section
+app.get('/popularinwomen', async (req, res) => {
+    let products = await Product.find({category: 'women'});
+    let popular_in_women = products.slice(0, 4);
+    console.log("popular in women fetched");
+    res.send(popular_in_women);
+})
+
+
+// Creating middleware to fetch user
+    const fetchUser = async (req, res, next) => {
+        const token = req.header('auth-token');
+        if (!token) {
+            res.status(401).send({errors:"Please authenticate using valid token"})
+        }
+        else {
+            try {
+                // check if the auth token is legitimate (it's a user who signed up) and get the user data from the req
+                const data = jwt.verify(token, 'secret_ecom');
+                req.user = data.user;
+                next();
+            } catch(error) {
+                res.status(401).send({errors:"Please authenticate using a valid token"})
+            }
+        }
+    }
+
+
+// Creating Endpoint for Adding Products in CartData
+app.post('/addtocart', fetchUser, async (req, res) => {
+    let userData = await Users.findOne({_id:req.user.id});
+    userData.cartData[req.body.itemId] += 1;
+    await Users.findOneAndUpdate({_id:req.user.id}, {cartData: userData.cartData});
+    res.send("Added")
+})
+
+
+
 // get a message in the terminal to tell you if the app is running successfully on the given port, or if there are errors
 app.listen(port, (error)=> {
     if(!error) {
