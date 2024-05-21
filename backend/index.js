@@ -209,6 +209,14 @@ app.post('/login', async (req, res) => {
     }
 })
 
+// Creating Endpoint for New Collection Data
+app.get('/newcollections', async (req, res) => {
+    let products = await Product.find({});
+    // the .slice(-8) gets the 8 most recent products
+    let newcollection = products.slice(1).slice(-8);
+    console.log("NewCollection Fetched");
+    res.send(newcollection);
+})
 
 
 // get a message in the terminal to tell you if the app is running successfully on the given port, or if there are errors
