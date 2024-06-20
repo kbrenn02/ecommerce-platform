@@ -16,4 +16,4 @@ A full stack E-commerce website using React JS, MongoDB, Express, and NodeJS
 
 
 ### FINAL PROJECT V1:
-{inset loom demo}
+[{Loom demo}](https://www.loom.com/share/f666483388ae41dbb4694fc6a5567368?sid=61bc98b2-aac7-4e14-9225-5a5f61b5c5fd)
